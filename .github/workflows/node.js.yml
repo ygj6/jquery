@@ -51,7 +51,7 @@ jobs:
       with:
         node-version: ${{ matrix.NODE_VERSION }}
 
-    - name: Install firefox esr
+    - name: Install firefox ESR
       run: |
         export FIREFOX_SOURCE_URL='https://download.mozilla.org/?product=firefox-esr-latest&lang=en-US&os=linux64'
         wget --no-verbose $FIREFOX_SOURCE_URL -O - | tar -jx -C ${HOME}
