@@ -4,13 +4,12 @@ node_js:
 - "10"
 - "12"
 - "14"
-- "15"
 env:
   - NPM_SCRIPT=test:browserless
 jobs:
   include:
     - name: "Browser tests: full build, Chrome & Firefox stable"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:browser"
         - BROWSERS="ChromeHeadless,FirefoxHeadless"
@@ -18,39 +17,45 @@ jobs:
         chrome: stable
         firefox: latest
     - name: "Browser tests: slim build, Chrome stable"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:slim"
         - BROWSERS="ChromeHeadless"
       addons:
         chrome: stable
     - name: "Browser tests: no-deprecated build, Chrome stable"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:no-deprecated"
         - BROWSERS="ChromeHeadless"
       addons:
         chrome: stable
     - name: "Browser tests: ES modules build, Chrome stable"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:esmodules"
         - BROWSERS="ChromeHeadless"
       addons:
         chrome: stable
     - name: "Browser tests: AMD build, Chrome stable"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:amd"
         - BROWSERS="ChromeHeadless"
       addons:
         chrome: stable
     - name: "Browser tests: full build, Firefox ESR"
-      node_js: "14"
+      node_js: "12"
       env:
         - NPM_SCRIPT="test:browser"
         - BROWSERS="FirefoxHeadless"
       addons:
         firefox: latest-esr
+    - name: "BrowserStack tests: karma:tests"
+      node_js: "12"
+      env:
+        - NPM_SCRIPT="test:browserstack"
+        - secure: tgZAG4xFo6GTjXa5jIBwt/2s9iCXTKzJhvMpIo/DcxNF4aEtf+HROI3XSPmPP3DKGi4DtxNRMv4RJIm0FkfBE+/5TWW+yBDz33Do1ZMN6qVFqiEhF0rgXdULGxxgNwCO4asadZpuxl6UUrt1DmvJHH3Ig24egnLui66MmITH6zus0SI4+YZhW7pY/bhcGGfd/PoxTVCzfVpDXxvNY64iFBdwaEUx3hijcrL9Se1w/lausCkxg56PNsAn9KsbJmA2s2F7WSjSZJn0wqHiIisj3U49csfFpKknKrdCDc9kIqjHurxBbWyoThZrRohLLPNFHqD9d5tlgihI5DL5ZmI8j2doRT6mwpV77SzoqwN2AbQ3L/j4Rajreoztuw5V9Qd0YWa0Na6audzK9YlMo/pq+f1nUyVHqpmxaiSEi6eH8fLcr9DR/s6SV9hej9F91ALTy5aVIjbQIOv4/qHWsXNAWPkugOQgb5J2r3X/h7P+vGBDaiuMmUg6iznsYcXqHxROqe/iPcYgndAnkZvdYxmK33LvlmPtPRvDLoplomsEf3uFqNhhDg8hryrRaOLWW+aia2U0acPq1UqhItNmOj8BPmF/CMLQ/U2jIRohgRscC/NcdpWa5L0WRC6ljkxZbj9BtoHJ1GSE7muImF0TgzpMz0sJS4yOJET+3kEoskSJJBI=
+        - secure: uuAbNy7wl2J0Edy6Pk4CaFhCCCWPM4EDpzfVc79JH2zPkJlpKk5wHcfdnIDQsYOTc3spX7s5eQa8ISZDyKHv/Yf+rx/v5OF3S4VqO7ljDlQTHePUUeadnTKwg08u8VoZBEgPW5mCHHPifuVbegXr/9FP5o2wfk6AF60KT0j470Ists8cXVB7H1P4jJbSIwSfj07+14auC2sba8Mi5lkkIPu8ECEfHFFDY3F8swWMGtsL+rQoK6arFEkJMKXx+1T/t2WqjglUjaiWLI6RHSLUSW1dKSrbIvn9i0R/cul6OZQ2Ysc2YoZXgsPUvM+mzYqUudXPpKTC4x+Zln5GHkiesDJX2eUoRYQA1xNTw8z/IgXPkXyiey06HZTNtH+miEt880D8oHET98+JwpIsic6rOl0dFihOpnqS5VUagaZrDqqMqj/FyhFt1WxhRbDIyJ5bW91GJMqMMiWgRBMM8yuFNtQK8kE8i2DsMF3N6z1xUIKa0v3tu3ZRqzY05EIL0FDzctOKwVBYDFlefVzF6MUmiTSXdTbqYVYHVSk/lCN0sKqp++dRDy2gJ0Ic5EQwMkxnpi8ze0XESJp2iCjCTIsWcQ177r2Ut5MmM0OuvbO3X1a0g7rRcjKo1APqQEbOWuXSku/fHrrflnxzBmhy6wkXNxenpAHVHCCkfjhEKezHvlU=   
 script:
   - npm run $NPM_SCRIPT
